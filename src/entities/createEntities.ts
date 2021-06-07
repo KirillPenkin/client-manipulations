@@ -8,7 +8,7 @@ export interface ICandidate {
     permitted: Set<string>;
 }
 
-export const entities = [];
+export const entities = [] as ICandidate[];
 
 const createEntity = (): ICandidate => {
     const permitted = new Set<string>();
@@ -25,5 +25,5 @@ const createEntity = (): ICandidate => {
 }
 
 for (let i=0; i< entitiesNumber; i++) {
-    entities.push(createEntity);
+    entities.push(createEntity());
 }
