@@ -1,18 +1,20 @@
 import { ICandidate } from "./createEntities";
 
-export const filterProp = (entities: ICandidate[], field: string, value: string) => {
+export const filterProp = (entities: ICandidate[], field: keyof ICandidate, value: string) => {
     return entities.filter((item) => {
-        return (item[field] as string).startsWith(value);
+        return (item[field] as any).startsWith(value);
     })
 }
 
-export const includesPermission = (entities: ICandidate[], value: string) => {
+export const includesAnyPermissions = (entities: ICandidate[], permissions: string[]) => {
     return entities.filter((item) => {
-        return item.permitted.has(value);
-    });
+        return permissions.some((permission) => {
+            item.permitted.has(permission);
+        })
+    })
 }
 
-export const sortProp = (entities: ICandidate[], field: string) => {
+export const sortProp = (entities: ICandidate[], field: keyof ICandidate) => {
     return entities.sort((item1, item2) => {
         return item1[field] > item2[field] ? 1 : -1;
     })
