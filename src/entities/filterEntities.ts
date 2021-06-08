@@ -9,7 +9,7 @@ export const filterProp = (entities: ICandidate[], field: keyof ICandidate, valu
 export const includesAnyPermissions = (entities: ICandidate[], permissions: string[]) => {
     return entities.filter((item) => {
         return permissions.some((permission) => {
-            item.permitted.has(permission);
+            return item.permitted.has(permission);
         })
     })
 }
