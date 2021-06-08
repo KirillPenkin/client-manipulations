@@ -2,7 +2,8 @@ import { ICandidate } from "./createEntities";
 
 export const filterProp = (entities: ICandidate[], field: keyof ICandidate, value: string) => {
     return entities.filter((item) => {
-        return (item[field] as any).startsWith(value);
+        const fieldValue = item[field] as string;
+        return fieldValue.startsWith(value);
     })
 }
 
