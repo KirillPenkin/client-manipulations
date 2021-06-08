@@ -1,6 +1,6 @@
 import { getRandomPart, getRandomResource } from "./const";
 
-const entitiesNumber = 1000000;
+const entitiesNumber = 100000;
 
 export interface ICandidate {
     firstName: string;
@@ -18,8 +18,8 @@ const createEntity = (): ICandidate => {
     permitted.add(getRandomResource());
     permitted.add(getRandomResource());
     return {
-        firstName: `${getRandomPart()} ${getRandomPart()}`,
-        lastName: `${getRandomPart()} ${getRandomPart()}`,
+        firstName: getRandomPart(),
+        lastName: getRandomPart(),
         permitted,
     }
 }
