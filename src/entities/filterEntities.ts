@@ -8,14 +8,18 @@ export const filterProp = (entities: ICandidate[], field: keyof ICandidate, valu
 
 export const includesAnyPermissions = (entities: ICandidate[], permissions: string[]) => {
     return entities.filter((item) => {
-        return permissions.some((permission) => {
+        return permissions.every((permission) => {
             return item.permitted.has(permission);
         })
     })
 }
 
-export const sortProp = (entities: ICandidate[], field: keyof ICandidate) => {
+export const sortProp = (entities: ICandidate[], field: keyof ICandidate, isAccending: boolean) => {
     return entities.sort((item1, item2) => {
-        return item1[field] > item2[field] ? 1 : -1;
+        if (isAccending) {
+            return item1[field] > item2[field] ? 1 : -1;
+        } else {
+            return item1[field] < item2[field] ? 1 : -1;
+        }
     })
 }
