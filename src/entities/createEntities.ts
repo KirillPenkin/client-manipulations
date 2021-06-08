@@ -1,6 +1,6 @@
 import { getRandomPart, getRandomResource } from "./const";
 
-const entitiesNumber = 100000;
+const entitiesNumber = 200000;
 
 export interface ICandidate {
     firstName: string;
