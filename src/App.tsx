@@ -32,6 +32,8 @@ function App() {
         console.log(item);
     }
 
+    console.clear();
+
     console.time('pemission');
     const permissionFiltered = !permission.length ? entities : includesAnyPermissions(entities, permission);
     console.timeEnd('pemission');
@@ -54,13 +56,16 @@ function App() {
         <div className="App">
             <div className="controlls-container">
                 <div className="filters">
-                    <label htmlFor="firstName">firstName</label>
-                    <input id="firstName" name="firstName" type="text" onChange={changeFirstName} />
+                    <div className="input-contailner">
+                        <label htmlFor="firstName">firstName</label>
+                        <input id="firstName" name="firstName" type="text" onChange={changeFirstName} />
+                    </div>
 
-                    <label htmlFor="lastName">lastName</label>
-                    <input id="lastName" name="lastName" type="text" onChange={changeLastName} />
-
-                    <button className="sort-order" onClick={switchSortOrder}>witch sort order</button>
+                    <div className="input-container">
+                        <label htmlFor="lastName">lastName</label>
+                        <input id="lastName" name="lastName" type="text" onChange={changeLastName} />
+                    </div>
+                    <button className="sort-order" onClick={switchSortOrder}>Switch sort order</button>
                     <div className="info">{`Number of items: ${entities.length} Shown: ${toShow.length}`}</div>
                 </div>
                 <div className="permissions">
@@ -68,7 +73,8 @@ function App() {
                         const identifier = `${item}${index}`;
                         const checked = permission.includes(item);
                         return (
-                            <label key={identifier} htmlFor={identifier}>
+                            <div className="permission-item">
+                                <label key={identifier} htmlFor={identifier}>
                                 {item}
                                 <input
                                     type="checkbox"
@@ -77,7 +83,9 @@ function App() {
                                     checked={checked}
                                     onChange={(e) => changePermissions(item, checked)}
                                 />
-                            </label>
+                                </label>
+                            </div>
+                            
                         );
                     })}
                 </div>
