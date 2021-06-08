@@ -5,6 +5,9 @@ const getRandomInt = (max: number) => Math.floor(Math.random() * max);
 export const getRandomPart = () => parts[getRandomInt(parts.length)];
 
 const resourcesSource = `Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga dolor at magni eos delectus saepe perspiciatis dolorum temporibus inventore facilis, iusto eligendi fugit similique, cum id aliquid. Nostrum placeat quam asperiores tempora reiciendis, tenetur dignissimos fugiat sit in veritatis incidunt magni similique animi praesentium tempore earum pariatur rerum cumque consequatur! Id iusto blanditiis ad accusantium cupiditate veritatis iure eos vel doloremque architecto suscipit aliquid beatae explicabo, consectetur modi cum consequatur assumenda ratione. Quisquam consequuntur reiciendis consectetur neque cum numquam tempore saepe laborum. Beatae magnam ducimus soluta cum alias numquam, vel veritatis commodi qui possimus obcaecati provident, nihil excepturi incidunt a!`;
-export const resources = resourcesSource.split(' ');
+const rawResourcesArray = resourcesSource.split(' ');
+const resourcesSet = new Set<string>();
+rawResourcesArray.forEach((item) => resourcesSet.add(item));
+export const resources = Array.from(resourcesSet);
 
 export const getRandomResource = () => resources[getRandomInt(resources.length)];
